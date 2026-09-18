@@ -241,6 +241,8 @@ interface SessionCommentBodyInput {
   rationale?: string;
   markup?: string;
   author?: string;
+  /** Optional raw producer label, e.g. an agent name; defaults to the CLI's own label. */
+  source?: string;
 }
 
 export type SessionCommentAddTargetInput =

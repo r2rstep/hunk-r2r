@@ -91,6 +91,7 @@ function toCommentToolInput(input: DaemonCommentAddRequest): CommentToolInput {
     rationale: input.rationale,
     markup: input.markup,
     author: input.author,
+    source: input.source,
     reveal: input.reveal,
   };
   if (input.replyTo !== undefined) {
@@ -109,6 +110,7 @@ function toCommentBatchItem(input: DaemonCommentApplyItem): CommentBatchItemInpu
     rationale: input.rationale,
     markup: input.markup,
     author: input.author,
+    source: input.source,
   };
   if (input.replyTo !== undefined) {
     return { ...body, replyTo: input.replyTo };

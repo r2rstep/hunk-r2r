@@ -58,6 +58,7 @@ const commentItem = z
     rationale: optionalString,
     markup: optionalString,
     author: optionalString,
+    source: optionalString,
   })
   .refine(hasValidCommentTarget, {
     message: "A comment must be either a reply or one explicitly anchored root note.",
@@ -76,6 +77,7 @@ const commandInputs = {
       rationale: optionalString,
       markup: optionalString,
       author: optionalString,
+      source: optionalString,
       reveal: z.boolean().optional(),
     })
     .refine(hasValidCommentTarget, {

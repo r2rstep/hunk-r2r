@@ -1006,6 +1006,7 @@ describe("Hunk session daemon server", () => {
             hunkIndex: 0,
             summary: "First",
             author: "Pi",
+            source: "claude",
           },
           {
             filePath: "src/example.ts",
@@ -1057,6 +1058,7 @@ describe("Hunk session daemon server", () => {
               hunkNumber: 1,
               summary: "First",
               author: "Pi",
+              source: "claude",
             },
             {
               filePath: "src/example.ts",

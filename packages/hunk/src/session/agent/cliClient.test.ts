@@ -195,6 +195,7 @@ describe("HTTP Hunk session CLI client", () => {
         summary: "Check this",
         rationale: "Preserve mapping",
         author: "pi",
+        source: "pi",
         reveal: true,
         output: "json",
       }),
@@ -296,6 +297,7 @@ describe("HTTP Hunk session CLI client", () => {
         summary: "Check this",
         rationale: "Preserve mapping",
         author: "pi",
+        source: "pi",
         reveal: true,
       },
       {

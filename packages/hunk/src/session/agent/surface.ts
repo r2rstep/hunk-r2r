@@ -339,11 +339,12 @@ export const SESSION_AGENT_COMMANDS = {
         description: "experimental STML body (target session must opt in)",
       },
       { flag: "--author <name>", description: "optional author label" },
+      { flag: "--source <label>", description: "optional producer label, e.g. an agent name" },
       { flag: "--focus", description: "add the note and focus the viewport on it" },
       jsonOption,
     ],
     synopsis: [
-      `hunk session comment add ${SESSION_SELECTOR_SYNOPSIS} (--reply-to <note-id> | --file <path> ${constraintSynopsis(COMMENT_TARGET_CONSTRAINT)}) --summary <text> [--rationale <text>] [--author <name>] [--markup <stml>] [--focus] [--json]`,
+      `hunk session comment add ${SESSION_SELECTOR_SYNOPSIS} (--reply-to <note-id> | --file <path> ${constraintSynopsis(COMMENT_TARGET_CONSTRAINT)}) --summary <text> [--rationale <text>] [--author <name>] [--source <label>] [--markup <stml>] [--focus] [--json]`,
     ],
     examples: [
       'hunk session comment add --repo . --file README.md --new-line 103 --summary "Tighten this wording"',
@@ -375,7 +376,8 @@ export const SESSION_AGENT_COMMANDS = {
       '        "hunk": 2,',
       '        "summary": "Explain this hunk",',
       '        "rationale": "Optional detail",',
-      '        "author": "Pi"',
+      '        "author": "Pi",',
+      '        "source": "Pi"',
       "      },",
       "      {",
       '        "replyTo": "user:123",',

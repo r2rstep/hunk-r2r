@@ -126,6 +126,7 @@ export type SessionDaemonRequest =
       rationale?: string;
       markup?: string;
       author?: string;
+      source?: string;
       reveal: boolean;
     }
   | {
@@ -141,6 +142,7 @@ export type SessionDaemonRequest =
         rationale?: string;
         markup?: string;
         author?: string;
+        source?: string;
       }>;
       revealMode: SessionCommentApplyCommandInput["revealMode"];
     }

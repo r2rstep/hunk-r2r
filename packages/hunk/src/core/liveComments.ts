@@ -20,6 +20,8 @@ export interface CommentBodyInput {
   /** Optional STML markup rendered as the note body (see packages/hunk/src/ui/lib/stml). */
   markup?: string;
   author?: string;
+  /** Raw producer label; defaults to `"mcp"` when omitted (see `AgentAnnotation.source`). */
+  source?: string;
 }
 
 export type CommentTargetInput = CommentBodyInput &
@@ -51,7 +53,7 @@ export type CommentTargetInput = CommentBodyInput &
 export interface LiveComment extends AgentAnnotation {
   id: string;
   parentId?: string;
-  source: "mcp";
+  source: string;
   author?: string;
   createdAt: string;
   filePath: string;
@@ -129,7 +131,7 @@ export function buildLiveComment(
   return {
     id: commentId,
     ...(input.replyTo ? { parentId: input.replyTo } : {}),
-    source: "mcp",
+    source: input.source ?? "mcp",
     author: input.author,
     createdAt,
     filePath: input.filePath,

@@ -103,6 +103,23 @@ describe("live comment helpers", () => {
     });
   });
 
+  test("overrides the default mcp source when the caller specifies one", () => {
+    const comment = buildLiveComment(
+      {
+        filePath: "src/example.ts",
+        side: "new",
+        line: 4,
+        summary: "Note",
+        source: "claude",
+      },
+      "comment-3",
+      "2026-03-22T00:00:00.000Z",
+      0,
+    );
+
+    expect(comment.source).toBe("claude");
+  });
+
   // Regression: a hunk with one addition surrounded by lots of context used to report
   // newRange = [start, start] (additions-only), so a comment anchored past the leading
   // context fell outside the hunk's range, annotationOverlapsHunk returned false, and

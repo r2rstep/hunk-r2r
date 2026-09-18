@@ -1158,6 +1158,31 @@ describe("parseCli", () => {
     });
   });
 
+  test("parses session comment add with --source", async () => {
+    const parsed = await parseCli([
+      "bun",
+      "hunk",
+      "session",
+      "comment",
+      "add",
+      "session-1",
+      "--file",
+      "README.md",
+      "--new-line",
+      "103",
+      "--summary",
+      "Frame this as MCP-first",
+      "--source",
+      "claude",
+    ]);
+
+    expect(parsed).toMatchObject({
+      kind: "session",
+      action: "comment-add",
+      source: "claude",
+    });
+  });
+
   test("parses session comment add with --focus", async () => {
     const parsed = await parseCli([
       "bun",
@@ -2328,6 +2353,20 @@ describe("parseCli session comment apply payload", () => {
         { filePath: "b.ts", side: "new", line: 9, summary: "new side" },
       ],
       revealMode: "none",
+    });
+  });
+
+  test("parses a source label on a batch item", async () => {
+    const parsed = await applyWithPayload(
+      JSON.stringify({
+        comments: [{ filePath: "a.ts", oldLine: 4, summary: "old side", source: "claude" }],
+      }),
+    );
+
+    expect(parsed).toMatchObject({
+      kind: "session",
+      action: "comment-apply",
+      comments: [{ filePath: "a.ts", side: "old", line: 4, summary: "old side", source: "claude" }],
     });
   });
 

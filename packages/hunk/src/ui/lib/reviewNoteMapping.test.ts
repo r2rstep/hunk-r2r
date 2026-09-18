@@ -78,6 +78,26 @@ describe("live comment round trip", () => {
     expect(stored.note.editable).toBe(false);
     expect(stored.resolution).toBe("active");
   });
+
+  test("classifies and round-trips a caller-specified source label", () => {
+    const comment = buildLiveComment(
+      {
+        filePath: "alpha.ts",
+        side: "new",
+        line: 4,
+        summary: "summary",
+        source: "claude",
+      },
+      "mcp:2",
+      "2024-01-01T00:00:00.000Z",
+      2,
+    );
+
+    const stored = liveCommentToStoredNote(comment, "alpha", testHunks);
+
+    expect(stored.note.source).toBe("ai");
+    expect(stored.note.originalSource).toBe("claude");
+  });
 });
 
 describe("user note projection", () => {

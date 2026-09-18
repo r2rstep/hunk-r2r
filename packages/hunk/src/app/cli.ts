@@ -811,6 +811,7 @@ function parseSessionCommentApplyPayload(raw: string): SessionCommentApplyItemIn
       rationale: typeof item.rationale === "string" ? item.rationale : undefined,
       markup: typeof item.markup === "string" && item.markup.length > 0 ? item.markup : undefined,
       author: typeof item.author === "string" ? item.author : undefined,
+      source: typeof item.source === "string" ? item.source : undefined,
     };
     if (typeof replyTo === "string") {
       return { ...body, replyTo };
@@ -1587,6 +1588,7 @@ async function parseSessionCommentAddCommand(tokens: string[]): Promise<ParsedCl
     rationale: parsedOptions.rationale,
     markup: parsedOptions.markup,
     author: parsedOptions.author,
+    source: parsedOptions.source,
     reveal: parsedOptions.focus ?? false,
   };
 }

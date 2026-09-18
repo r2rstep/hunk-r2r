@@ -229,6 +229,7 @@ class HttpHunkSessionCliClient implements HunkSessionCliClient {
         rationale: input.rationale,
         markup: input.markup,
         author: input.author,
+        source: input.source,
         reveal: input.reveal,
       })
     ).result;

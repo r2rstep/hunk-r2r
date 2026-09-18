@@ -173,6 +173,7 @@ const commentApplyItemSchema = z
     rationale: z.string().optional(),
     markup: z.string().optional(),
     author: z.string().optional(),
+    source: z.string().optional(),
   })
   .refine(hasValidCommentTarget, {
     message: "A comment must be either a reply or one explicitly anchored root note.",
@@ -216,6 +217,7 @@ export const sessionDaemonRequestSchema = z.discriminatedUnion("action", [
       rationale: z.string().optional(),
       markup: z.string().optional(),
       author: z.string().optional(),
+      source: z.string().optional(),
       reveal: z.boolean(),
     })
     .refine(hasValidCommentTarget, {
